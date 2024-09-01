@@ -6,45 +6,26 @@
  * This script creates a proxy that adds required HTTP headers, so that `SharedArrayBuffer` will be exposed by browsers.
  */
 
-const httpProxy = require('http-proxy')
 const waitPort = require('wait-port')
 const parallel = require('run-parallel')
 const open = require('open')
 
-const ip = require('ip')
 const cp = require('child_process')
 
-const ORIGIN_HOST = ip.address() // same logic as OpenSumi (@opensumi/cli-engine/src/node/env.ts)
-const ORIGIN_PORT = 50777 // as assigned in `package.json`
+const HOST = 'localhost'
+const PORT = 50777
 
-const TARGET_HOST = 'localhost'
-const TARGET_PORT = 3200
-
-function startProxy() {
-  function init() {
-    const proxy = httpProxy.createProxyServer({
-      target: `http://${ORIGIN_HOST}:${ORIGIN_PORT}`,
-    })
-
-    proxy.on('proxyRes', function (proxyRes, req, res) {
-      proxyRes.headers['Cross-Origin-Opener-Policy'] = 'same-origin'
-      proxyRes.headers['Cross-Origin-Embedder-Policy'] = 'require-corp'
-    })
-
-    proxy.listen(TARGET_PORT)
-
-    open(`http://${TARGET_HOST}:${TARGET_PORT}`)
-  }
-
-  waitPort({
-    host: ORIGIN_HOST,
-    port: ORIGIN_PORT,
-  }).then(init)
+async function openPage() {
+  await waitPort({
+    host: HOST,
+    port: PORT,
+  })
+  open(`http://${HOST}:${PORT}`)
 }
 
 function startOrigin() {
   const cliPath = require.resolve('@opensumi/cli')
-  cp.fork(cliPath, ['dev', `-e=${process.cwd()}`, `-p=${ORIGIN_PORT}`])
+  cp.fork(cliPath, ['dev', `-e=${process.cwd()}`, `-p=${PORT}`])
 }
 
-parallel([startOrigin, startProxy])
+parallel([startOrigin, openPage])

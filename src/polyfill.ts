@@ -10,6 +10,20 @@ function polyfillL10n() {
   }
 }
 
+function polyfillTelemetry() {
+  vscodeAny.env.createTelemetryLogger = function () {
+    return {
+      onDidChangeEnableStates() {},
+      isErrorsEnabled: false,
+      isUsageEnabled: false,
+      logUsage() {},
+      logError() {},
+      dispose() {},
+    }
+  }
+}
+
 export function applyPolyfills() {
   polyfillL10n()
+  polyfillTelemetry()
 }
