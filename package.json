@@ -3,7 +3,7 @@
   "displayName": "TypeScript Language Features for OpenSumi (backport)",
   "description": "TypeScript Language Features for Web IDE, backported from VSCode to OpenSumi 2.x",
   "publisher": "thatpaf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.36.0",
     "opensumi": "^1.8.30"
