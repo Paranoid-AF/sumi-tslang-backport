@@ -1,8 +1,10 @@
 import * as vscode from 'vscode'
-import { activate as activateTS } from 'vscode-ts-extension'
+import { applyPolyfills } from './polyfill'
 
-export function activate(context: vscode.ExtensionContext) {
-  console.log('Hello world, OpenSumi!')
+export async function activate(context: vscode.ExtensionContext) {
+  applyPolyfills()
+
+  const { activate: activateTS } = require('vscode-ts-extension')
   activateTS(context)
 }
 
