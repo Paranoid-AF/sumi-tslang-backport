@@ -23,7 +23,12 @@ function polyfillTelemetry() {
   }
 }
 
+function polyfillUiKind() {
+  vscodeAny.env.uiKind = vscode.UIKind.Web
+}
+
 export function applyPolyfills() {
   polyfillL10n()
   polyfillTelemetry()
+  polyfillUiKind()
 }
