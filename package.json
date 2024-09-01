@@ -19,7 +19,7 @@
     "prepare": "cd src/vscode && yarn",
     "prepublishOnly": "npm run compile",
     "compile": "sumi compile --config",
-    "compile:ts": "cd src/vscode/extensions/typescript-language-features && rm -rf dist && yarn compile-web",
+    "compile:ts": "cd src/vscode/extensions/typescript-language-features && rm -rf dist && yarn compile-web && sed -i -e 's/require(\"vscode\")/__non_webpack_require__(\"vscode\")/g' dist/browser/extension.js",
     "watch": "sumi watch --config",
     "dev": "node scripts/bootstrap.js"
   },
@@ -31,6 +31,7 @@
     "@types/run-parallel": "1.1.2",
     "@types/vscode": "^1.39.0",
     "copy-webpack-plugin": "6.4.1",
+    "esbuild-loader": "4.2.2",
     "http-proxy": "1.18.1",
     "ip": "^1.1.8",
     "open": "^7.0.3",

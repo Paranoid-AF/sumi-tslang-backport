@@ -14,8 +14,13 @@ module.exports.vscode = node({
   entry: {
     'SUMI-EXTENSION': path.join(root, 'src/extension.ts'),
   },
-  externals: {
-    'vscode-ts-extension': './vscode-extension.js',
+  resolve: {
+    alias: {
+      'vscode-ts-extension': path.join(
+        root,
+        'src/vscode/extensions/typescript-language-features/dist/browser/extension.js'
+      ),
+    },
   },
   output: {
     filename: 'extension.js',
@@ -32,14 +37,21 @@ module.exports.vscode = node({
     new CopyPlugin({
       patterns: [
         {
-          from: 'src/vscode/extensions/typescript-language-features/dist/browser/extension.js',
-          to: 'vscode-extension.js',
-        },
-        {
           from: 'src/vscode/extensions/typescript-language-features/dist/browser/typescript',
           to: 'browser/typescript',
         },
       ],
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.[jt]sx?$/,
+        loader: 'esbuild-loader',
+        options: {
+          target: 'es2015',
+        },
+      },
+    ],
+  },
 })
