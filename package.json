@@ -1,6 +1,7 @@
 {
   "name": "sumi-tslang-backport",
   "displayName": "TypeScript Language Features for OpenSumi (backport)",
+  "description": "TypeScript Language Features for Web IDE, backported from VSCode to OpenSumi 2.x",
   "publisher": "thatpaf",
   "version": "0.0.1",
   "engines": {
