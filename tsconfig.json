@@ -5,17 +5,12 @@
     "target": "es6",
     "jsx": "react",
     "outDir": "out",
-    "lib": [
-      "es6",
-      "DOM"
-    ],
-    "typeRoots": [
-      "./node_modules/@types",
-      "./typings"
-    ],
+    "lib": ["es6", "DOM"],
+    "typeRoots": ["./node_modules/@types", "./typings"],
     "sourceMap": true,
     "rootDir": "src",
     "strict": false,
+    "preserveSymlinks": true,
     "experimentalDecorators": true,
     "paths": {
       "sumi": ["./node_modules/@opensumi/sumi"],

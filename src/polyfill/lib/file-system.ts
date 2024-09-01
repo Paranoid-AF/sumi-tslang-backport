@@ -100,3 +100,29 @@ export class FileSystemError extends Error {
     }
   }
 }
+
+export enum FileType {
+  /**
+   * File is unknown (neither file, directory nor symbolic link).
+   */
+  Unknown = 0,
+
+  /**
+   * File is a normal file.
+   */
+  File = 1,
+
+  /**
+   * File is a directory.
+   */
+  Directory = 2,
+
+  /**
+   * File is a symbolic link.
+   *
+   * Note: even when the file is a symbolic link, you can test for
+   * `FileType.File` and `FileType.Directory` to know the type of
+   * the target the link points to.
+   */
+  SymbolicLink = 64,
+}
