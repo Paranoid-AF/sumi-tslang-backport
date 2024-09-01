@@ -21,19 +21,25 @@
     "compile": "sumi compile --config",
     "compile:ts": "cd src/vscode/extensions/typescript-language-features && rm -rf dist && yarn compile-web",
     "watch": "sumi watch --config",
-    "dev": "sumi dev -e=$(pwd)"
+    "dev": "node scripts/bootstrap.js"
   },
   "devDependencies": {
     "@opensumi/cli": "1.0.2",
     "@opensumi/sumi": "latest",
     "@types/node": "^10.12.21",
     "@types/react": "^16.9.9",
+    "@types/run-parallel": "1.1.2",
     "@types/vscode": "^1.39.0",
     "copy-webpack-plugin": "6.4.1",
+    "http-proxy": "1.18.1",
+    "ip": "^1.1.8",
+    "open": "^7.0.3",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "run-parallel": "1.2.0",
     "typescript": "5.5.4",
     "vscode": "^1.1.28",
+    "wait-port": "1.1.0",
     "webpack-shell-plugin-next": "1.2.0"
   },
   "dependencies": {
