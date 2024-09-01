@@ -1,5 +1,9 @@
 import * as vscode from 'vscode'
 import * as l10n from '@vscode/l10n/dist/browser'
+import {
+  FileSystemError,
+  FileSystemProviderErrorCode,
+} from './lib/file-system-error'
 
 const vscodeAny = vscode as any
 
@@ -27,8 +31,14 @@ function polyfillUiKind() {
   vscodeAny.env.uiKind = vscode.UIKind.Web
 }
 
+function polyfillFileSystemError() {
+  vscodeAny.FileSystemError = FileSystemError
+  vscodeAny.FileSystemProviderErrorCode = FileSystemProviderErrorCode
+}
+
 export function applyPolyfills() {
   polyfillL10n()
   polyfillTelemetry()
   polyfillUiKind()
+  polyfillFileSystemError()
 }
