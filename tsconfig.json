@@ -18,18 +18,12 @@
     "strict": false,
     "experimentalDecorators": true,
     "paths": {
-      "sumi": [
-        "./node_modules/@opensumi/sumi"
-      ],
-      "sumi-browser":[
-        "./node_modules/@opensumi/sumi"
-      ]
+      "sumi": ["./node_modules/@opensumi/sumi"],
+      "sumi-browser": ["./node_modules/@opensumi/sumi"],
+      "vscode-ts-extension": ["./typings/vscode-ts-extension/index.d.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    ".vscode-test"
-  ],
+  "exclude": ["node_modules", ".vscode-test", "./src/vscode/**/*"],
   "include": [
     "./src/extension.ts",
     "./src/extend/**/*"

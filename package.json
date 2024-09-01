@@ -19,7 +19,7 @@
     "prepare": "cd src/vscode && yarn",
     "prepublishOnly": "npm run compile",
     "compile": "sumi compile --config",
-    "compile:ts": "cd src/vscode/extensions/typescript-language-features && yarn compile-web",
+    "compile:ts": "cd src/vscode/extensions/typescript-language-features && rm -rf dist && yarn compile-web",
     "watch": "sumi watch --config",
     "dev": "sumi dev -e=$(pwd)"
   },
@@ -29,6 +29,7 @@
     "@types/node": "^10.12.21",
     "@types/react": "^16.9.9",
     "@types/vscode": "^1.39.0",
+    "copy-webpack-plugin": "6.4.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "typescript": "5.5.4",
