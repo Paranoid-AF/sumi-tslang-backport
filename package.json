@@ -1,0 +1,40 @@
+{
+  "name": "sumi-tslang-backport",
+  "displayName": "TypeScript Language Features for OpenSumi (backport)",
+  "publisher": "thatpaf",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.36.0",
+    "opensumi": "^1.8.30"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "browser": "./dist/extension.js",
+  "scripts": {
+    "prepare": "cd src/vscode && yarn",
+    "prepublishOnly": "npm run compile",
+    "compile": "sumi compile --config",
+    "compile:ts": "cd src/vscode/extensions/typescript-language-features && yarn compile-web",
+    "watch": "sumi watch --config",
+    "dev": "sumi dev -e=$(pwd)"
+  },
+  "devDependencies": {
+    "@opensumi/cli": "1.0.2",
+    "@opensumi/sumi": "latest",
+    "@types/node": "^10.12.21",
+    "@types/react": "^16.9.9",
+    "@types/vscode": "^1.39.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "typescript": "5.5.4",
+    "vscode": "^1.1.28",
+    "webpack-shell-plugin-next": "1.2.0"
+  },
+  "dependencies": {
+    "@opensumi/ide-components": "latest"
+  }
+}
