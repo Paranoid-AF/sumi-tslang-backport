@@ -18,7 +18,7 @@
   "scripts": {
     "prepare": "cd src/vscode && yarn",
     "prepublishOnly": "npm run compile",
-    "compile": "sumi compile --config",
+    "compile": "rm -rf dist && sumi compile --config",
     "compile:ts": "cd src/vscode/extensions/typescript-language-features && rm -rf dist && yarn compile-web && sed -i -e 's/require(\"vscode\")/__non_webpack_require__(\"vscode\")/g' dist/browser/extension.js",
     "watch": "sumi watch --config",
     "dev": "node scripts/bootstrap.js"

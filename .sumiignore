@@ -9,3 +9,10 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 node_modules/
+
+.opensumi/
+scripts/
+.gitmodules
+.prettierignore
+.prettierrc.js
+sumi-webpack.config.js
