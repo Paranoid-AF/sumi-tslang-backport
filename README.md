@@ -72,5 +72,5 @@ $ npm run compile
 
 1. 读取不到 d.ts 文件
 
-Web 场景暂时不能解析符号链接，建议在项目的 `tsconfig.json` 中，设置 `findSourceFileWorker` 为 `true`
+* Web 场景暂时不能解析符号链接，建议在项目的 `tsconfig.json` 中，设置 `preserveSymlinks` 为 `true`
 
